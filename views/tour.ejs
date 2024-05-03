@@ -1,0 +1,69 @@
+<% include('base', {body: `
+
+    <section class="section-header">
+      <div class="header__hero">
+        <div class="header__hero-overlay">&nbsp;</div>
+        <img class="header__hero-img" src="/img/tours/<%= tour.imageCover %>" alt="<%= tour.name %>">
+      </div>
+    
+      <div class="heading-box">
+        <h1 class="heading-primary">
+          <span><%= tour.name %> tour</span>
+        </h1>
+        <div class="heading-box__group">
+          <div class="heading-box__detail">
+            <svg class="heading-box__icon">
+              <use xlink:href="/img/icons.svg#icon-clock"></use>
+            </svg>
+            <span class="heading-box__text"><%= tour.duration %> days</span>
+          </div>
+          <div class="heading-box__detail">
+            <svg class="heading-box__icon">
+              <use xlink:href="/img/icons.svg#icon-map-pin"></use>
+            </svg>
+            <span class="heading-box__text"><%= tour.startLocation.description %></span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="section-description">
+      <div class="overview-box">
+        <div class="overview-box__group">
+          <h2 class="heading-secondary ma-bt-lg">Quick facts</h2>
+          <%= overviewBox('Next date', new Date(tour.startDates[0]).toLocaleString('en-us', {month: 'long', year: 'numeric'}), 'calendar') %>
+          <%= overviewBox('Difficulty', tour.difficulty, 'trending-up') %>
+          <%= overviewBox('Participants', tour.maxGroupSize + ' people', 'user') %>
+          <%= overviewBox('Rating', tour.ratingsAverage + ' / 5', 'star') %>
+        </div>
+    
+        <div class="overview-box__group">
+          <h2 class="heading-secondary ma-bt-lg">Your tour guides</h2>
+          <% tour.guides.forEach(function(guide) { %>
+            <div class="overview-box__detail">
+              <img class="overview-box__img" src="/img/users/<%= guide.photo %>" alt="<%= guide.name %>">
+              <span class="overview-box__label"><%= guide.role === 'lead-guide' ? 'Lead guide' : 'Tour guide' %></span>
+              <span class="overview-box__text"><%= guide.name %></span>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+    
+      <div class="description-box">
+        <h2 class="heading-secondary ma-bt-lg">About <%= tour.name %> tour</h2>
+        <% tour.description.split('\n').forEach(function(paragraph) { %>
+          <p class="description__text"><%= paragraph %></p>
+        <% }); %>
+      </div>
+    </section>
+    
+    <!-- Additional sections like map, pictures, reviews, CTA as needed -->
+    `}) %>
+   
+    <% function overviewBox(label, text, icon) { %>
+      <div class="overview-box__detail">
+        <svg class="overview-box__icon">
+          <use xlink:href="/img/icons.svg#icon-<%= icon %>"></use>
+        </svg>
+        <span class="overview-box__label"><%= label %></span>
+        <span class="overview-box__text"><%=
