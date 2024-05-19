@@ -12,6 +12,28 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700" rel="stylesheet" />
   <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+  <style>
+    .section-header .heading-primary input{
+      color:white !important;
+      background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(125, 213, 111, 0.85)), to(rgba(40, 180, 135, 0.85)));
+      padding:5px;
+    }
+    .section-header{
+      
+    }
+    .overview-box__group input{
+
+    }
+    .description-box textarea{
+      border-width: 1px;
+      font-size: 20px;
+      width:100%;
+    }
+    .picture-box{
+      cursor: pointer;
+    }
+    
+  </style>
 
   <title>Natours | The Park Camper Tour</title>
 
@@ -71,26 +93,31 @@
 
 
   <section class="section-header">
+    <div class="gradient-header" onclick="document.getElementById('upload-1').click();">
+      <input type="file" id="upload-1" class="file-uploader gradient-header" accept="image/*" style="display:none;" >
+      <img style="position:relative;width: 100%; height: 100%; z-index:-2; display:block;" class="picture-box__img--1" src="img/placeholder.png" alt="The Park Camper Tour 1" />
+    </div>
     <div class="heading-box">
       <h1 class="heading-primary">
-        <span>The Park <br />
-          Camper Tour</span>
+        <input placeholder="Tour Name" onkeypress="this.style.width = (this.value.length +1) + 'ch';"> <br />
+          </input>
       </h1>
       <div class="heading-box__group">
         <div class="heading-box__detail">
           <svg class="heading-box__icon">
             <use xlink:href="img/icons.svg#icon-clock"></use>
           </svg>
-          <span class="heading-box__text">10 days</span>
+          <input class="heading-box__text">days</input>
         </div>
         <div class="heading-box__detail">
           <svg class="heading-box__icon">
             <use xlink:href="img/icons.svg#icon-map-pin"></use>
           </svg>
-          <span class="heading-box__text">Las Vegas, USA</span>
+          <input class="heading-box__text"></input>
         </div>
       </div>
     </div>
+   
   </section>
 
   <section class="section-description">
@@ -103,39 +130,49 @@
               <use xlink:href="img/icons.svg#icon-calendar"></use>
             </svg>
             <span class="overview-box__label">Next date</span>
-            <span class="overview-box__text">August 2021</span>
+            <input type="date"></input>
           </div>
           <div class="overview-box__detail">
             <svg class="overview-box__icon">
               <use xlink:href="img/icons.svg#icon-trending-up"></use>
             </svg>
             <span class="overview-box__label">Difficulty</span>
-            <span class="overview-box__text">Medium</span>
+            <select name="difficulty" id="Difficulty">
+              <option value="easy">Easy</option>
+              <option value="easy">Medium</option>
+              <option value="easy">Hard</option>
+            </select>
           </div>
           <div class="overview-box__detail">
             <svg class="overview-box__icon">
               <use xlink:href="img/icons.svg#icon-user"></use>
             </svg>
             <span class="overview-box__label">Participants</span>
-            <span class="overview-box__text">10 people</span>
+            <input type="number" placeholder="Enter a number">people</input>
           </div>
           <div class="overview-box__detail">
             <svg class="overview-box__icon">
               <use xlink:href="img/icons.svg#icon-star"></use>
             </svg>
             <span class="overview-box__label">Rating</span>
-            <span class="overview-box__text">4.9 / 5</span>
+            <span>N/A</span>
           </div>
         </div>
 
-        <div class="overview-box__group">
+        <div class="overview-box__group-guide">
           <h2 class="heading-secondary ma-bt-lg">Your tour guides</h2>
 
           <div class="overview-box__detail">
             <img src="img/users/user-19.jpg" alt="Lead guide" class="overview-box__img" />
-            <span class="overview-box__label">Lead guide</span>
-            <span class="overview-box__text">Steven Miller</span>
+            <select class="overview-box__label">
+              <option value="Lead guide">Lead guide</option>
+              <option value="Tour guide">Tour guide</option>
+              <option value="Intern">Intern</option>
+            </select>
+            <input placeholder="Enter name" class="overview-box__text"></input>
           </div>
+          <button id="addGuideBtn" class="btn btn--green" style="color: #444;">Add New Guide</button>
+          <!--
           <div class="overview-box__detail">
             <img src="img/users/user-18.jpg" alt="Tour guide" class="overview-box__img" />
             <span class="overview-box__label">Tour guide</span>
@@ -145,32 +182,20 @@
             <img src="img/users/user-17.jpg" alt="Intern" class="overview-box__img" />
             <span class="overview-box__label">Intern</span>
             <span class="overview-box__text">Max Smith</span>
-          </div>
+          </div>-->
         </div>
+
       </div>
     </div>
 
     <div class="description-box">
       <h2 class="heading-secondary ma-bt-lg">About the park camper tour</h2>
-      <p class="description__text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-        minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat. Duis aute irure dolor in
-        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur.
-      </p>
-      <p class="description__text">
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est
-        laborum!
-      </p>
+      <textarea id="w3review" name="w3review" rows="4" > </textarea> 
     </div>
   </section>
 
   <section class="section-pictures">
-    <div class="picture-box">
+    <!--<div class="picture-box">
       <img class="picture-box__img picture-box__img--1" src="img//tours/tour-5-1.jpg" alt="The Park Camper Tour 1" />
     </div>
     <div class="picture-box">
@@ -178,6 +203,18 @@
     </div>
     <div class="picture-box">
       <img class="picture-box__img picture-box__img--3" src="img/tours/tour-5-3.jpg" alt="The Park Camper Tour 1" />
+    </div>-->
+    <div class="picture-box">
+      <input type="file" id="upload-2" class="file-uploader" accept="image/*" style="display:none;">
+      <img style="width: 33.33vw;" class="picture-box__img picture-box__img--2" src="img/placeholder.png" alt="The Park Camper Tour 1" onclick="document.getElementById('upload-2').click();"/>
+    </div>
+    <div class="picture-box">
+        <input type="file" id="upload-3" class="file-uploader" accept="image/*" style="display:none;">
+        <img style="width: 33.33vw;" class="picture-box__img picture-box__img--3" src="img/placeholder.png" alt="The Park Camper Tour 1" onclick="document.getElementById('upload-3').click();"/>
+    </div>
+    <div class="picture-box">
+        <input type="file" id="upload-4" class="file-uploader" accept="image/*" style="display:none;">
+        <img style="width: 33.33vw;" class="picture-box__img picture-box__img--4" src="img/placeholder.png" alt="The Park Camper Tour 1" onclick="document.getElementById('upload-4').click();"/>
     </div>
   </section>
 
@@ -470,6 +507,7 @@
       </div>
     </div>
   </section>
+  <button class="btn btn--green span-all-rows">SUBMIT TOUR</button>
 
   <footer class="bg-gray-200 text-gray-800 px-20 py-16 w-full border-t-4 border-gray-400">
     <div class="max-w-screen-xl mx-auto flex flex-wrap justify-between items-start">
@@ -502,33 +540,82 @@
   </footer>
 
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
       const themeToggle = document.querySelector('.theme-toggle');
+
       themeToggle.addEventListener('click', function() {
-        document.body.classList.toggle('dark-theme');
-        const icon = themeToggle;
-        if (document.body.classList.contains('dark-theme')) {
-          icon.classList.remove('fa-sun', 'text-yellow-500');
-          icon.classList.add('fa-moon', 'text-blue-500');
-        } else {
-          icon.classList.remove('fa-moon', 'text-blue-500');
-          icon.classList.add('fa-sun', 'text-yellow-500');
-        }
-      });
+          document.body.classList.toggle('dark-theme');
+          const icon = themeToggle;
 
-      const currentPath = window.location.pathname.split('/').pop();
-      const links = document.querySelectorAll('.navbar .section a, .mobile-navbar a');
-
-      links.forEach(link => {
-        if (link.getAttribute('href') === currentPath) {
-          link.classList.add('active');
-        } else {
-          link.classList.remove('active');
-        }
+          if (document.body.classList.contains('dark-theme')) {
+              icon.classList.remove('fa-sun', 'text-yellow-500');
+              icon.classList.add('fa-moon', 'text-blue-500');
+          } else {
+              icon.classList.remove('fa-moon', 'text-blue-500');
+              icon.classList.add('fa-sun', 'text-yellow-500');
+          }
       });
+  });
+
+  // Image Uploader
+  document.querySelectorAll('.file-uploader').forEach((uploader, index) => {
+    uploader.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file && file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imgElement = document.querySelector(`.picture-box__img--${index + 1}`);
+                imgElement.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
     });
-  </script>
+});
+document.getElementById('addGuideBtn').addEventListener('click', function() {
+    // Container where new elements will be added
+    const container = document.querySelector('.overview-box__group-guide');
+
+    // Create a new detail div
+    const newDetail = document.createElement('div');
+    newDetail.classList.add('overview-box__detail');
+
+    // Add image (optional, remove if not needed)
+    const img = document.createElement('img');
+    img.src = 'img/users/user-19.jpg'; // Use a placeholder or a specific path
+    img.alt = 'Lead guide';
+    img.classList.add('overview-box__img');
+    newDetail.appendChild(img);
+
+    // Create the select element
+    const select = document.createElement('select');
+    select.classList.add('overview-box__label');
+    ['Lead guide', 'Tour guide', 'Intern'].forEach(function(role) {
+        const option = document.createElement('option');
+        option.value = role;
+        option.textContent = role;
+        select.appendChild(option);
+    });
+    newDetail.appendChild(select);
+
+    // Create the input element
+    const input = document.createElement('input');
+    input.placeholder = 'Enter name';
+    input.classList.add('overview-box__text');
+    newDetail.appendChild(input);
+    // Create the delete button
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.classList.add('delete-btn');
+    deleteBtn.onclick = function() {
+        newDetail.remove();
+    };
+    newDetail.appendChild(deleteBtn);
+
+    // Append the new detail div to the container
+    container.insertBefore(newDetail, this);  // Insert before the button
+});
+</script>
 
 </body>
 
